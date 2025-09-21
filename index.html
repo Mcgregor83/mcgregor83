@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Gasolineras</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title">
+                    <i class="fas fa-gas-pump"></i>
+                    Buscador de Gasolineras
+                </h1>
+                <div class="header-info">
+                    <span class="favorites-count">
+                        <i class="fas fa-heart"></i>
+                        <span id="favoritesCounter">0</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Sección de Búsqueda -->
+            <section class="search-section">
+                <div class="card">
+                    <div class="card__body">
+                        <h2>Buscar Estaciones</h2>
+                        <div class="search-controls">
+                            <button id="useLocationBtn" class="btn btn--primary btn--full-width location-btn">
+                                <i class="fas fa-location-arrow"></i>
+                                <span>Usar mi ubicación</span>
+                            </button>
+                            
+                            <div class="search-divider">
+                                <span>o</span>
+                            </div>
+                            
+                            <div class="manual-search">
+                                <div class="form-group">
+                                    <input type="text" 
+                                           id="locationInput" 
+                                           class="form-control" 
+                                           placeholder="Buscar en otra ciudad o dirección...">
+                                </div>
+                                <button id="searchBtn" class="btn btn--secondary btn--full-width">
+                                    <i class="fas fa-search"></i>
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Loading State -->
+                        <div id="loadingState" class="loading-state hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Obteniendo ubicación...</span>
+                        </div>
+                        
+                        <!-- Error State -->
+                        <div id="errorState" class="error-state hidden">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span id="errorMessage">No se pudo obtener la ubicación</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Filtros -->
+            <section class="filters-section">
+                <div class="card">
+                    <div class="card__body">
+                        <h3>Filtrar por marca</h3>
+                        <div class="filters-grid" id="filtersGrid">
+                            <!-- Los filtros se generarán dinámicamente -->
+                        </div>
+                        <button id="clearFiltersBtn" class="btn btn--outline btn--sm">
+                            Limpiar filtros
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabs de Resultados -->
+            <section class="results-section">
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="nearby">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Estaciones Cercanas
+                        </button>
+                        <button class="tab-btn" data-tab="favorites">
+                            <i class="fas fa-heart"></i>
+                            Mis Favoritos
+                        </button>
+                    </div>
+                    
+                    <!-- Tab Content - Estaciones Cercanas -->
+                    <div class="tab-content active" id="nearbyTab">
+                        <div class="results-header">
+                            <h3>Estaciones Cercanas</h3>
+                            <div class="results-info">
+                                <span id="resultsCount">0 estaciones encontradas</span>
+                            </div>
+                        </div>
+                        <div id="stationsList" class="stations-list">
+                            <!-- Las estaciones se mostrarán aquí -->
+                        </div>
+                        
+                        <!-- Empty State -->
+                        <div id="emptyState" class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <h4>No se encontraron estaciones</h4>
+                            <p>Prueba a buscar en otra ubicación o ajustar los filtros.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Tab Content - Favoritos -->
+                    <div class="tab-content" id="favoritesTab">
+                        <div class="results-header">
+                            <h3>Mis Favoritos</h3>
+                        </div>
+                        <div id="favoritesList" class="stations-list">
+                            <!-- Los favoritos se mostrarán aquí -->
+                        </div>
+                        
+                        <!-- Empty Favorites State -->
+                        <div id="emptyFavoritesState" class="empty-state">
+                            <i class="fas fa-heart"></i>
+                            <h4>Sin favoritos guardados</h4>
+                            <p>Añade estaciones a favoritos para acceder rápidamente a ellas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-info">
+                    <i class="fas fa-info-circle"></i>
+                    Precios orientativos. Última actualización: Septiembre 2025
+                </p>
+                <p class="footer-disclaimer">
+                    Los precios pueden variar. Consulta siempre los precios actuales en la estación.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
